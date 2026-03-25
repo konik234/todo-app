@@ -185,9 +185,9 @@
         }
 
         .task-date {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.78rem;
-            margin-top: 4px;
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 0.8rem;
+            margin-top: 5px;
         }
 
         .task-item.done .task-text {
@@ -424,13 +424,13 @@
                             </li>
                         `;
                     }
-                    const dateStr = t.createdAt ? formatDate(t.createdAt) : '';
+                    const dateStr = formatDate(t.createdAt || t.id);
                     return `
                         <li class="task-item${t.done ? ' done' : ''}" data-id="${t.id}">
                             <div class="checkbox${t.done ? ' checked' : ''}" onclick="toggleTask(${t.id})"></div>
                             <div class="task-content">
                                 <div class="task-text">${escapeHtml(t.text)}</div>
-                                ${dateStr ? `<div class="task-date">${dateStr}</div>` : ''}
+                                <div class="task-date">${dateStr}</div>
                             </div>
                             <div class="task-actions">
                                 <button class="action-btn edit-btn" onclick="startEdit(${t.id})" title="Edytuj">&#9998;</button>
